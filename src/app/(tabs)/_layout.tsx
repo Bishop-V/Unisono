@@ -1,7 +1,8 @@
 import { View, StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
 import global, { palette, useColorMode } from "@/styles/global";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { LibraryHeaderRight } from "@/components/header/LibraryHeader";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 export default function TabLayout() {
   const c = useColorMode();
@@ -29,15 +30,15 @@ export default function TabLayout() {
       <Tabs.Screen
         name="Index"
         options={{
-          title: "Index",
+          title: "Library",
           // headerTitle: () => <HomeHeaderTitle />,
           //
-          // headerRight: () => <HomeHeaderRight />,
+          headerRight: () => <LibraryHeaderRight />,
 
           tabBarIcon: ({ color, focused }) => (
             <View style={[styles.focusPill, focused && styles.focusHighlight]}>
               <MaterialCommunityIcons
-                name={focused ? "home" : "home-outline"}
+                name={"minidisc"}
                 style={global.icon}
                 color={color}
               />
