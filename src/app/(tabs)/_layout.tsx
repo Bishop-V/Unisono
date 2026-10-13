@@ -1,8 +1,8 @@
-import { View, StyleSheet } from "react-native";
-import { Tabs } from "expo-router";
-import global, { palette, useColorMode } from "@/styles/global";
 import { LibraryHeaderRight } from "@/components/header/LibraryHeader";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import global, { palette, useColorMode } from "@/styles/global";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
+import { StyleSheet, View } from "react-native";
 
 export default function TabLayout() {
   const c = useColorMode();
@@ -51,6 +51,21 @@ export default function TabLayout() {
         name="Search"
         options={{
           title: "Search",
+          tabBarIcon: ({ color, focused }) => (
+            <View style={[styles.focusPill, focused && styles.focusHighlight]}>
+              <MaterialCommunityIcons
+                name={"magnify"}
+                style={global.icon}
+                color={color}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="play"
+        options={{
+          title: "play",
           tabBarIcon: ({ color, focused }) => (
             <View style={[styles.focusPill, focused && styles.focusHighlight]}>
               <MaterialCommunityIcons
