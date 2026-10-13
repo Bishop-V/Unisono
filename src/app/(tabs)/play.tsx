@@ -1,6 +1,9 @@
 import { useColorMode } from "@/styles/global";
 import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
-import { Button, ScrollView, StyleSheet, Text } from "react-native";
+import { Button, StyleSheet, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+// TODO: use async stroage to make playlists
 
 const audiopath = require("../../../assets/music/Cotards-Solution.mp3");
 
@@ -14,17 +17,23 @@ export default function play() {
     player.seekTo(80);
   }
   return (
-    <ScrollView style={[{ backgroundColor: c.bg }]}>
+    <SafeAreaView style={[{ backgroundColor: c.bg }]}>
       <Button title="play" onPress={() => player.play()} />
 
       <Button title="pause" onPress={() => player.pause()} />
 
-      <Button title="reset" onPress={() => player.seekTo(0)} />
+      <Button
+        title="reset"
+        onPress={() => {
+          player.seekTo(0);
+          player.pause();
+        }}
+      />
 
       <Button title="skip to" onPress={() => player.seekTo(80)} />
       <Text>timestamp: {status.currentTime}</Text>
       <Text>duration: {status.duration}</Text>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 
