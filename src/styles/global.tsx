@@ -8,6 +8,9 @@ const global = StyleSheet.create({
   icon: {
     fontSize: 20,
   },
+  iconHuge: {
+    fontSize: 60,
+  },
 });
 
 export default global;
