@@ -1,8 +1,8 @@
 //Skeleton for settings options.
 import { ComponentProps } from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import global, { useColorMode } from "@/styles/global";
+import { MaterialIcons } from "@expo/vector-icons";
+import global, { useTheme } from "@/style/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 type Props = {
@@ -18,12 +18,16 @@ export default function SettingsElement({
   title,
   description,
 }: Props) {
+  const t = useTheme();
   return (
-    <Pressable onPress={() => onPress} style={[styles.SettingsWrap]}>
-      <MaterialCommunityIcons style={[global.iconHuge]} name={icon} />
+    <Pressable onPress={onPress} style={[styles.SettingsWrap]}>
+      <MaterialCommunityIcons
+        style={[global.iconHuge, { color: t.text }]}
+        name={icon}
+      />
       <View>
-        <Text>{title}</Text>
-        <Text>{description}</Text>
+        <Text style={[{ color: t.text }]}>{title}</Text>
+        <Text style={[{ color: t.text }]}>{description}</Text>
       </View>
     </Pressable>
   );
@@ -34,5 +38,6 @@ const styles = StyleSheet.create({
     padding: "2%",
     minHeight: "5%",
     flexDirection: "row",
+    alignItems: "center",
   },
 });
