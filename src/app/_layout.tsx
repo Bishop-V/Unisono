@@ -1,14 +1,14 @@
 import { Stack } from "expo-router";
-import { useColorMode } from "@/styles/global";
+import { useTheme } from "@/style/global";
 export default function RootLayout() {
-  const c = useColorMode();
+  const t = useTheme();
   return (
     <Stack
       screenOptions={{
-        headerStyle: { backgroundColor: c.bg },
-        headerTintColor: c.sym,
+        headerStyle: { backgroundColor: t.bg },
+        headerTintColor: t.text,
         headerShadowVisible: false,
-        contentStyle: { backgroundColor: c.bg },
+        contentStyle: { backgroundColor: t.bg },
       }}
     >
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

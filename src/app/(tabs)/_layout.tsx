@@ -1,29 +1,29 @@
 import { View, StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
-import global, { palette, useColorMode } from "@/styles/global";
+import global, { palette, useTheme } from "@/style/global";
 import { LibraryHeaderRight } from "@/components/header/LibraryHeader";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 export default function TabLayout() {
-  const c = useColorMode();
+  const t = useTheme();
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: palette.select,
 
-        tabBarInactiveTintColor: c.sym,
+        tabBarInactiveTintColor: t.text,
         headerStatusBarHeight: 20,
         headerShadowVisible: false,
         tabBarStyle: {
-          backgroundColor: c.bg,
+          backgroundColor: t.bg,
           borderTopWidth: 0.2,
           justifyContent: "center",
           height: 75,
         },
-        headerStyle: { backgroundColor: c.bg },
-        sceneStyle: { paddingHorizontal: 16, backgroundColor: c.bg },
+        headerStyle: { backgroundColor: t.bg },
+        sceneStyle: { paddingHorizontal: 16, backgroundColor: t.bg },
         headerTitleStyle: {
-          color: c.sym,
+          color: t.text,
         },
       }}
     >
