@@ -8,8 +8,20 @@ export const palette = {
 
 //light/dark variants
 const colors = {
-  light: { bg: "#fff", text: "#000", primary: "#6c5ce7" },
-  dark: { bg: "#000", text: "#fff", primary: "#a29bfe" },
+  light: {
+    bg: "#fff",
+    text: "#000",
+    primary: "#6c5ce7",
+    card: "#EAECF0",
+    cardBorder: "#E6E6E7",
+  },
+  dark: {
+    bg: "#000",
+    text: "#fff",
+    primary: "#a29bfe",
+    card: "#27292D",
+    cardBorder: "#2D2F33",
+  },
 };
 
 export function useTheme() {

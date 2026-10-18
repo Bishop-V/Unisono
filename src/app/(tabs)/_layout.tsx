@@ -51,6 +51,7 @@ export default function TabLayout() {
         name="Search"
         options={{
           title: "Search",
+          headerTitle: "",
           tabBarIcon: ({ color, focused }) => (
             <View style={[styles.focusPill, focused && styles.focusHighlight]}>
               <MaterialCommunityIcons
