@@ -5,7 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 export function LibraryHeaderRight() {
   const t = useTheme();
   return (
-    <Link href="/Settings" asChild>
+    <Link href="/settings" asChild>
       <Pressable>
         <MaterialIcons
           name={"settings"}

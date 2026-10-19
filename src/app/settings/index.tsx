@@ -7,21 +7,22 @@ import {
   Appearance,
   useColorScheme,
 } from "react-native";
+import { useRouter } from "expo-router";
 import { ComponentProps } from "react";
 import global, { useTheme } from "@/style/global";
-import SettingsElement from "@/components/SettingsElement";
+import SettingsElement from "@/components/settings/SettingsElement";
 
 export default function Settings() {
+  const router = useRouter();
   const t = useTheme();
   const scheme = useColorScheme();
 
   const SettingsArray: ComponentProps<typeof SettingsElement>[] = [
     {
-      onPress: () =>
-        Appearance.setColorScheme(scheme === "dark" ? "light" : "dark"),
-      icon: "moon-waning-crescent",
-      title: "Dark Mode",
-      description: "Toggle dark/light mode",
+      onPress: () => router.navigate("/settings/appearance"),
+      icon: "palette",
+      title: "Theme",
+      description: "Choose the app theme.",
     },
     { icon: "cat", title: "test", description: "test" },
   ];
