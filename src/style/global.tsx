@@ -1,4 +1,5 @@
 import { StyleSheet, useColorScheme } from "react-native";
+import { useSyncExternalStore } from "react";
 
 export const palette = {
   select: "#6699FF",
@@ -6,17 +7,17 @@ export const palette = {
   accent: "#A2A9B1",
 };
 
-//light/dark variants
-const colors = {
-  light: {
-    bg: "#fff",
-    text: "#000",
-    primary: "#6c5ce7",
-    card: "#EAECF0",
-    cardBorder: "#E6E6E7",
-  },
-  dark: {
+//Variants
+export const colors = {
+  default: {
     bg: "#000",
+    text: "#fff",
+    primary: "#a29bfe",
+    card: "#27292D",
+    cardBorder: "#2D2F33",
+  },
+  magpie: {
+    bg: "#fff",
     text: "#fff",
     primary: "#a29bfe",
     card: "#27292D",
@@ -24,9 +25,23 @@ const colors = {
   },
 };
 
-export function useTheme() {
-  return useColorScheme() === "dark" ? colors.dark : colors.light;
-}
+//Default theme
+let theme = colors.default;
+const listeners = new Set<() => void>();
+
+export const useTheme = () =>
+  useSyncExternalStore(
+    (cb) => {
+      listeners.add(cb);
+      return () => listeners.delete(cb);
+    },
+    () => theme,
+  );
+
+export const setTheme = (name: keyof typeof colors) => {
+  theme = colors[name];
+  listeners.forEach((l) => l());
+};
 
 const global = StyleSheet.create({
   icon: {
@@ -34,6 +49,9 @@ const global = StyleSheet.create({
   },
   iconHuge: {
     fontSize: 60,
+  },
+  header1: {
+    fontSize: 23,
   },
 });
 
