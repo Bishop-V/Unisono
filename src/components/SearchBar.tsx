@@ -1,8 +1,7 @@
 //Skeleton for settings options.
-import { ComponentProps } from "react";
-import { Text, View, StyleSheet, Pressable } from "react-native";
 import global, { useTheme } from "@/style/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { StyleSheet, TextInput, View } from "react-native";
 
 export default function SearchBar() {
   const t = useTheme();
@@ -18,7 +17,7 @@ export default function SearchBar() {
           name="magnify"
           style={[global.icon, { color: t.text }]}
         ></MaterialCommunityIcons>
-        <Text style={[{ color: t.text }]}>Search</Text>
+        <TextInput style={[{ color: t.text }]} placeholder="Search"></TextInput>
       </View>
     </View>
   );
