@@ -1,5 +1,6 @@
 import { StyleSheet, useColorScheme } from "react-native";
 import { useSyncExternalStore } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const palette = {
   select: "#6699FF",
@@ -27,6 +28,7 @@ export const colors = {
 
 //Default theme
 let theme = colors.default;
+
 const listeners = new Set<() => void>();
 
 export const useTheme = () =>
@@ -41,6 +43,17 @@ export const useTheme = () =>
 export const setTheme = (name: keyof typeof colors) => {
   theme = colors[name];
   listeners.forEach((l) => l());
+  AsyncStorage.setItem("theme", name);
+};
+
+export const loadTheme = async () => {
+  const saved = await AsyncStorage.getItem("theme");
+
+  //make sure it exists
+  if (saved && saved in colors) {
+    theme = colors[saved as keyof typeof colors];
+    listeners.forEach((l) => l());
+  }
 };
 
 const global = StyleSheet.create({

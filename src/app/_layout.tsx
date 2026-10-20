@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { Stack } from "expo-router";
-import { useTheme } from "@/style/global";
+import { useTheme, loadTheme } from "@/style/global";
+
 export default function RootLayout() {
   const t = useTheme();
+  useEffect(() => {
+    loadTheme();
+  }, []);
   return (
     <Stack
       screenOptions={{
