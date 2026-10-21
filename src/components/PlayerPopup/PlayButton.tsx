@@ -20,20 +20,4 @@ export default function PlayButton({ song }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  searchBar: {
-    height: 40,
-    paddingHorizontal: "2%",
-    alignItems: "center",
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    borderRadius: 19,
-    borderWidth: 2,
-  },
-  searchBarLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "5%",
-  },
-});
+const styles = StyleSheet.create({});

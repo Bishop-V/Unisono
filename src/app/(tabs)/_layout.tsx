@@ -1,13 +1,21 @@
 import { View, StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
+import { BottomTabBar } from "expo-router/js-tabs";
+
 import global, { palette, useTheme } from "@/style/global";
 import { HomeHeaderRight } from "@/components/header/HomeHeader";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import PlayerPopup from "@/components/PlayerPopup/PlayerPopup";
 export default function TabLayout() {
   const t = useTheme();
   return (
     <Tabs
+      tabBar={(props) => (
+        <View>
+          <PlayerPopup />
+          <BottomTabBar {...props} />
+        </View>
+      )}
       screenOptions={{
         tabBarActiveTintColor: palette.select,
 
