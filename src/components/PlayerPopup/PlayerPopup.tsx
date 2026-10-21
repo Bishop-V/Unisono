@@ -3,30 +3,40 @@ import { Text, View, StyleSheet, Pressable } from "react-native";
 import global, { useTheme } from "@/style/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PlayButton from "./PlayButton";
-
+import SongArt from "./SongArt";
+import SongInfo from "./SongInfo";
+import ProgressBar from "./ProgressBar";
 export default function PlayerPopup() {
   const t = useTheme();
   return (
-    <View styles={styles.main}>
+    <Pressable style={styles.main}>
       <View style={[styles.controls, { backgroundColor: t.bg }]}>
         <View style={styles.playerLeft}>
-          {/* <SongArt key={song.name}/> */}
-          {/* <SongCard key={song.name} title={song.name}/> */}
+          <SongArt />
+          <SongInfo />
         </View>
 
         <PlayButton />
       </View>
-      {/* <ProgressBar /> */}
-    </View>
+      <ProgressBar />
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  main: {},
+  main: {
+    paddingHorizontal: "2%",
+  },
   controls: {
     flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: 64,
   },
   playerLeft: {
     flexDirection: "row",
+    gap: "4%",
+    height: "100%",
+    alignItems: "center",
   },
 });
