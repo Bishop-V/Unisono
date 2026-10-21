@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
 import global, { palette, useTheme } from "@/style/global";
-import { LibraryHeaderRight } from "@/components/header/LibraryHeader";
+import { HomeHeaderRight } from "@/components/header/HomeHeader";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 export default function TabLayout() {
@@ -28,12 +28,31 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="Index"
+        name="index"
+        options={{
+          title: "Home",
+          // headerTitle: () => <HomeHeaderTitle />,
+          //
+          headerRight: () => <HomeHeaderRight />,
+
+          tabBarIcon: ({ color, focused }) => (
+            <View style={[styles.focusPill, focused && styles.focusHighlight]}>
+              <MaterialCommunityIcons
+                name={"home"}
+                style={global.icon}
+                color={color}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="library"
         options={{
           title: "Library",
           // headerTitle: () => <HomeHeaderTitle />,
           //
-          headerRight: () => <LibraryHeaderRight />,
+          //headerRight: () => <LibraryHeaderRight />,
 
           tabBarIcon: ({ color, focused }) => (
             <View style={[styles.focusPill, focused && styles.focusHighlight]}>
@@ -48,7 +67,7 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="Search"
+        name="search"
         options={{
           title: "Search",
           headerTitle: "",
